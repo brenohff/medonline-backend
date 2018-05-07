@@ -18,7 +18,7 @@ public class Endereco {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long idEndereco;
 	
 	private String cep;
 	private String complemento;
@@ -33,11 +33,11 @@ public class Endereco {
 	
 	//GETTERS AND SETTERS
 	public Long getId() {
-		return id;
+		return idEndereco;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(Long idEndereco) {
+		this.idEndereco = idEndereco;
 	}
 
 	public String getCep() {

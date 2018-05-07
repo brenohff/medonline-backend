@@ -17,17 +17,18 @@ public class Receita {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long idReceita;
 	
 	private String descricao;
-	private Date dt_receita;
+	private Date dtReceita;
+	
 	
 	//GETTERS AND SETTERS
-	public Long getId() {
-		return id;
+	public Long getIdReceita() {
+		return idReceita;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setIdReceita(Long idReceita) {
+		this.idReceita = idReceita;
 	}
 	public String getDescricao() {
 		return descricao;
@@ -35,13 +36,10 @@ public class Receita {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public Date getDt_receita() {
-		return dt_receita;
+	public Date getDtReceita() {
+		return dtReceita;
 	}
-	public void setDt_receita(Date dt_receita) {
-		this.dt_receita = dt_receita;
+	public void setDtReceita(Date dtReceita) {
+		this.dtReceita = dtReceita;
 	}
-	
-	
-
 }

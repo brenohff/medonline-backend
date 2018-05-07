@@ -38,6 +38,9 @@ public class Consulta implements Serializable{
 	@OneToMany(mappedBy = "consulta")
 	private Set<Exame> exame;
 	
+	@OneToMany(mappedBy = "consulta")
+	private Set<Diagnostico> diagnostico;
+	
 	private String assunto;
 
 	
@@ -88,6 +91,30 @@ public class Consulta implements Serializable{
 
 	public void setExame(Set<Exame> exame) {
 		this.exame = exame;
+	}
+
+	public Long getIdConsulta() {
+		return idConsulta;
+	}
+
+	public void setIdConsulta(Long idConsulta) {
+		this.idConsulta = idConsulta;
+	}
+
+	public Date getDtConsulta() {
+		return dtConsulta;
+	}
+
+	public void setDtConsulta(Date dtConsulta) {
+		this.dtConsulta = dtConsulta;
+	}
+
+	public Set<Diagnostico> getDiagnostico() {
+		return diagnostico;
+	}
+
+	public void setDiagnostico(Set<Diagnostico> diagnostico) {
+		this.diagnostico = diagnostico;
 	}
 	
 }

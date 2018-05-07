@@ -1,5 +1,6 @@
 package br.com.medonline.modal;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -18,7 +19,9 @@ import br.com.medonline.TipoSexo;
 @Entity
 @Table(name = "MEDICO")
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Medico {
+public class Medico implements Serializable{
+
+	private static final long serialVersionUID = -5888636092094648442L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,14 +42,6 @@ public class Medico {
 
 
 	//GETTERS AND SETTERS
-	public Long getId() {
-		return idMedico;
-	}
-
-	public void setId(Long idMedico) {
-		this.idMedico = idMedico;
-	}
-
 	public String getNome() {
 		return nome;
 	}
@@ -93,6 +88,14 @@ public class Medico {
 
 	public void setConsulta(Set<Consulta> consulta) {
 		this.consulta = consulta;
+	}
+
+	public Long getIdMedico() {
+		return idMedico;
+	}
+
+	public void setIdMedico(Long idMedico) {
+		this.idMedico = idMedico;
 	}
 	
 }

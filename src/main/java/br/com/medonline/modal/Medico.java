@@ -14,8 +14,6 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
-import br.com.medonline.TipoSexo;
-
 @Entity
 @Table(name = "MEDICO")
 @JsonInclude(JsonInclude.Include.NON_NULL)

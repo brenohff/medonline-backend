@@ -13,23 +13,25 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import br.com.medonline.TipoSexo;
 
 @Entity
-@Table(name = "PACIENTE")
+@Table(name = "MEDICO")
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Paciente {
+public class Medico {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	private String nome;
+	private String crm;
+	private String especialidade;
+	
 	@ManyToOne()
 	@JoinColumn(name = "endereco_id", nullable = false)
 	private Endereco endereco;
 	
-	private Integer idade;
-	private String nome;
-	private String observacao;
 	private TipoSexo sexo;
-	
+
+
 	//GETTERS AND SETTERS
 	public Long getId() {
 		return id;
@@ -37,14 +39,6 @@ public class Paciente {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Integer getIdade() {
-		return idade;
-	}
-
-	public void setIdade(Integer idade) {
-		this.idade = idade;
 	}
 
 	public String getNome() {
@@ -55,12 +49,28 @@ public class Paciente {
 		this.nome = nome;
 	}
 
-	public String getObservacao() {
-		return observacao;
+	public String getCrm() {
+		return crm;
 	}
 
-	public void setObservacao(String observacao) {
-		this.observacao = observacao;
+	public void setCrm(String crm) {
+		this.crm = crm;
+	}
+
+	public String getEspecialidade() {
+		return especialidade;
+	}
+
+	public void setEspecialidade(String especialidade) {
+		this.especialidade = especialidade;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 
 	public TipoSexo getSexo() {
@@ -70,13 +80,5 @@ public class Paciente {
 	public void setSexo(TipoSexo sexo) {
 		this.sexo = sexo;
 	}
-
-	public Endereco getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	};
 	
 }

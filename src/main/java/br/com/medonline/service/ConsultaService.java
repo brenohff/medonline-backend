@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.medonline.modal.Consulta;
 import br.com.medonline.repository.ConsultaRp;
+import br.com.medonline.service.exception.NotFound;
 
 @Service
 public class ConsultaService {
@@ -16,6 +17,20 @@ public class ConsultaService {
 	
 	public List<Consulta> buscaConsultas(){
 		return repository.findAll();
+	}
+	
+	public void salvarConsulta(Consulta Consulta) {
+		repository.save(Consulta);
+	}
+	
+	public Consulta buscaConsultaPorID(Long idConsulta) {
+		Consulta m = repository.buscaConsultaPorID(idConsulta);
+		
+		if(m != null) {
+			return m;
+		}else {
+			throw new NotFound("Consulta não encontrada.");
+		}
 	}
 	
 }

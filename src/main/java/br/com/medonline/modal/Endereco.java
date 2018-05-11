@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Entity
@@ -63,7 +64,8 @@ public class Endereco {
 	public void setLogradouro(String logradouro) {
 		this.logradouro = logradouro;
 	}
-
+	
+	@JsonIgnore
 	public Set<Medico> getMedico() {
 		return medico;
 	}
@@ -72,6 +74,7 @@ public class Endereco {
 		this.medico = medico;
 	}
 
+	@JsonIgnore
 	public Set<Paciente> getPaciente() {
 		return paciente;
 	}

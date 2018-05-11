@@ -32,23 +32,23 @@ public class Paciente implements Serializable{
 	@OneToMany(mappedBy = "paciente")
 	private Set<Consulta> consulta;
 	
-	private Integer idade;
+	private String dtNascimento;
 	private String nome;
 	private String observacao;
 	private TipoSexo sexo;
 	
 	
 	//GETTERS AND SETTERS
-	public Integer getIdade() {
-		return idade;
-	}
-
-	public void setIdade(Integer idade) {
-		this.idade = idade;
-	}
-
 	public String getNome() {
 		return nome;
+	}
+
+	public String getDtNascimento() {
+		return dtNascimento;
+	}
+
+	public void setDtNascimento(String dtNascimento) {
+		this.dtNascimento = dtNascimento;
 	}
 
 	public void setNome(String nome) {

@@ -26,7 +26,7 @@ public class Paciente implements Serializable{
 	private Long idPaciente;
 	
 	@ManyToOne()
-	@JoinColumn(name = "idEndereco", nullable = false)
+	@JoinColumn(name = "idEndereco", nullable = true)
 	private Endereco endereco;
 	
 	@OneToMany(mappedBy = "paciente")

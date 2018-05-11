@@ -30,7 +30,7 @@ public class Medico implements Serializable{
 	private String especialidade;
 	
 	@ManyToOne()
-	@JoinColumn(name = "idEndereco", nullable = false)
+	@JoinColumn(name = "idEndereco", nullable = true)
 	private Endereco endereco;
 	
 	@OneToMany(mappedBy = "medico")

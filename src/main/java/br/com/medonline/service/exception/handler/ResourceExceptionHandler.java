@@ -17,7 +17,7 @@ public class ResourceExceptionHandler {
 	public ResponseEntity<DetalhesErro> userAlreadyExists(NotFound e, HttpServletRequest request) {
 
 		DetalhesErro erro = new DetalhesErro();
-		erro.setStatus(409l);
+		erro.setStatus(404l);
 		erro.setTitulo(e.getMessage());
 		erro.setMensagemDesenvolvedor("http://erros.medonline.com/409");
 		erro.setTimestamp(System.currentTimeMillis());

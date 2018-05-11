@@ -34,11 +34,9 @@ public class MedicoService {
 	}
 
 	public Medico buscaMedicoPorID(Long idMedico) {
-		Medico m = repository.buscaMedicoPorID(idMedico);
-
-		if (m != null) {
-			return m;
-		} else {
+		try {
+			return repository.findById(idMedico).get();
+		} catch (Exception e) {
 			throw new NotFound("Médico não encontrado.");
 		}
 	}

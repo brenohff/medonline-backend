@@ -34,11 +34,9 @@ public class PacienteService {
 	}
 
 	public Paciente buscaPacientePorID(Long idPaciente) {
-		Paciente m = repository.buscaPacientePorID(idPaciente);
-
-		if (m != null) {
-			return m;
-		} else {
+		try {
+			return repository.findById(idPaciente).get();
+		} catch (Exception e) {
 			throw new NotFound("Paciente não encontrado.");
 		}
 	}

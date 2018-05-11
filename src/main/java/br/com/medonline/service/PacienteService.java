@@ -25,16 +25,12 @@ public class PacienteService {
 	}
 
 	public void salvarPaciente(Paciente paciente) {
-		if (paciente.getEndereco() != null) {
-			try {
-				endRepository.save(paciente.getEndereco());
-			} catch (Exception e) {
-				throw new CouldNotSave("Não foi possível salvar objeto");
-			}
-			repository.save(paciente);
-		} else {
-			repository.save(paciente);
+		try {
+			endRepository.save(paciente.getEndereco());
+		} catch (Exception e) {
+			throw new CouldNotSave("Não foi possível salvar objeto, verifique endereço.");
 		}
+		repository.save(paciente);
 	}
 
 	public Paciente buscaPacientePorID(Long idPaciente) {

@@ -16,33 +16,29 @@ public class MedicoService {
 
 	@Autowired
 	MedicoRp repository;
-	
+
 	@Autowired
 	EnderecoRp endRepository;
 
-	public List<Medico> buscaMedicos(){
+	public List<Medico> buscaMedicos() {
 		return repository.findAll();
 	}
-	
+
 	public void salvarMedico(Medico medico) {
-		if (medico.getEndereco() != null) {
-			try {
-				endRepository.save(medico.getEndereco());
-			} catch (Exception e) {
-				throw new CouldNotSave("Não foi possível salvar objeto");
-			}
-			repository.save(medico);
-		} else {
-			repository.save(medico);
+		try {
+			endRepository.save(medico.getEndereco());
+		} catch (Exception e) {
+			throw new CouldNotSave("Não foi possível salvar objeto, verifique endereço.");
 		}
+		repository.save(medico);
 	}
-	
+
 	public Medico buscaMedicoPorID(Long idMedico) {
 		Medico m = repository.buscaMedicoPorID(idMedico);
-		
-		if(m != null) {
+
+		if (m != null) {
 			return m;
-		}else {
+		} else {
 			throw new NotFound("Médico não encontrado.");
 		}
 	}

@@ -28,7 +28,8 @@ public class ExameService {
 		try {
 			consultaRepository.findById(exame.getConsulta().getIdConsulta()).get();
 		} catch (Exception e) {
-			throw new CouldNotSave("Erro ao cadastrar exame, verifique os dados e se a consulta existe antes de tentar novamente.");
+			throw new CouldNotSave(
+					"Erro ao cadastrar exame, verifique os dados e se a consulta existe antes de tentar novamente.");
 		}
 		repository.save(exame);
 	}
@@ -38,6 +39,14 @@ public class ExameService {
 			return repository.findById(idExame).get();
 		} catch (Exception e) {
 			throw new NotFound("Exame não encontrado.");
+		}
+	}
+
+	public List<Exame> buscaExamePelaConsulta(Long idConsulta) {
+		try {
+			return repository.buscaExamesPelaConsulta(idConsulta);
+		} catch (Exception e) {
+			throw new NotFound("Nenhum exame encontrado para esta consulta.");
 		}
 	}
 

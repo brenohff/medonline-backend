@@ -15,23 +15,28 @@ import br.com.medonline.service.ExameService;
 @RestController
 @RequestMapping("/exame")
 public class ExameController {
-	
+
 	@Autowired
 	ExameService service;
-	
+
 	@RequestMapping("/buscaTodos")
-	public List<Exame> buscaTodos(){
+	public List<Exame> buscaTodos() {
 		return service.buscaExames();
 	}
-	
+
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
-	public void salvar(@RequestBody Exame Exame){
+	public void salvar(@RequestBody Exame Exame) {
 		service.salvarExame(Exame);
 	}
-	
+
 	@RequestMapping(value = "/buscaExamePeloID")
-	public Exame getByFaceID(@RequestParam(value="idExame") Long idExame) {
+	public Exame getByFaceID(@RequestParam(value = "idExame") Long idExame) {
 		return service.buscaExamePorID(idExame);
+	}
+
+	@RequestMapping(value = "/buscaExamePelaConsulta")
+	public List<Exame> buscaExamePelaConsulta(@RequestParam(value = "idConsulta") Long idConsulta) {
+		return service.buscaExamePelaConsulta(idConsulta);
 	}
 
 }

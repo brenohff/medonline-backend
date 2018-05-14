@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Entity
@@ -32,8 +32,8 @@ public class Exame implements Serializable {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
 	private Date dtExame;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idConsulta", insertable = false, updatable = false)
+	@ManyToOne
+	@JoinColumn(name = "idConsulta")
 	private Consulta consulta;
 
 	// GETTERS AND SETTERS
@@ -61,6 +61,7 @@ public class Exame implements Serializable {
 		this.dtExame = dtExame;
 	}
 
+	@JsonIgnore
 	public Consulta getConsulta() {
 		return consulta;
 	}

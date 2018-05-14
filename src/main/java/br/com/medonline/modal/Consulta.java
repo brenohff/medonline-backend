@@ -5,8 +5,9 @@ import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -17,36 +18,35 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Entity
 @Table(name = "CONSULTA")
-@IdClass(value = ConsultaPK.class)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Consulta implements Serializable{
+public class Consulta implements Serializable {
 
 	private static final long serialVersionUID = -6861776569424067262L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idConsulta;
-	@Id
+
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
 	private Date dtConsulta;
-	
+
 	@ManyToOne()
 	@JoinColumn(name = "idMedico", nullable = false)
 	private Medico medico;
-	
+
 	@ManyToOne()
 	@JoinColumn(name = "idPaciente", nullable = false)
 	private Paciente paciente;
-	
+
 	@OneToMany(mappedBy = "consulta")
 	private Set<Exame> exame;
-	
+
 	@OneToMany(mappedBy = "consulta")
 	private Set<Diagnostico> diagnostico;
-	
+
 	private String assunto;
 
-	
-	//GETTERS AND SETTERS
+	// GETTERS AND SETTERS
 	public Long getId() {
 		return idConsulta;
 	}
@@ -118,5 +118,5 @@ public class Consulta implements Serializable{
 	public void setDiagnostico(Set<Diagnostico> diagnostico) {
 		this.diagnostico = diagnostico;
 	}
-	
+
 }

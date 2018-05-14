@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -19,29 +18,25 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @Entity
 @Table(name = "DIAGNOSTICO")
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Diagnostico implements Serializable{
+public class Diagnostico implements Serializable {
 
 	private static final long serialVersionUID = 6143178888116852498L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idDiagnostico;
-	
+
 	@OneToMany(mappedBy = "diagnostico")
 	private Set<Receita> receita;
-	
+
 	private String resultado;
 	private String descricao;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumns({
-	  @JoinColumn(name = "idConsulta", insertable = false, updatable = false),
-	  @JoinColumn(name = "dtConsulta", insertable = false, updatable = false)
-	})
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idConsulta", insertable = false, updatable = false)
 	private Consulta consulta;
 
-	
-	//GETTERS AND SETTERS
+	// GETTERS AND SETTERS
 	public Long getIdDiagnostico() {
 		return idDiagnostico;
 	}

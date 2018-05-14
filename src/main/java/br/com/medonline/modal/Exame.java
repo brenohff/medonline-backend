@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -18,27 +17,22 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @Entity
 @Table(name = "EXAME")
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Exame implements Serializable{
+public class Exame implements Serializable {
 
 	private static final long serialVersionUID = -4597136780748713679L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idExame;
-	
+
 	private String tipo;
 	private Date dtExame;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumns({
-	  @JoinColumn(name = "idConsulta", insertable = false, updatable = false),
-	  @JoinColumn(name = "dtConsulta", insertable = false, updatable = false)
-	})
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idConsulta", insertable = false, updatable = false)
 	private Consulta consulta;
 
-	
-	
-	//GETTERS AND SETTERS
+	// GETTERS AND SETTERS
 	public Long getIdExame() {
 		return idExame;
 	}
@@ -69,5 +63,5 @@ public class Exame implements Serializable{
 
 	public void setConsulta(Consulta consulta) {
 		this.consulta = consulta;
-	}	
+	}
 }

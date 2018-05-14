@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Entity
@@ -79,6 +80,7 @@ public class Paciente implements Serializable{
 		this.endereco = endereco;
 	}
 
+	@JsonIgnore
 	public Set<Consulta> getConsulta() {
 		return consulta;
 	}

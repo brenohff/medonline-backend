@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Entity
@@ -26,6 +27,9 @@ public class Exame implements Serializable {
 	private Long idExame;
 
 	private String tipo;
+	private String descricao;
+	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
 	private Date dtExame;
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -64,4 +68,13 @@ public class Exame implements Serializable {
 	public void setConsulta(Consulta consulta) {
 		this.consulta = consulta;
 	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	
 }

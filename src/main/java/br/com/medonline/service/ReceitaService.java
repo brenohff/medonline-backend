@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.medonline.modal.Receita;
 import br.com.medonline.repository.ReceitaRp;
+import br.com.medonline.service.exception.CouldNotSave;
 import br.com.medonline.service.exception.NotFound;
 
 @Service
@@ -23,16 +24,14 @@ public class ReceitaService {
 		try {
 			repository.save(receita);
 		} catch (Exception e) {
-			// TODO: handle exception
+			throw new CouldNotSave("Não foi possível inserir receita.");
 		}
 	}
 
 	public Receita buscaReceitaPorID(Long idReceita) {
-		Receita receita = repository.buscaReceitaPorID(idReceita);
-
-		if (receita != null) {
-			return receita;
-		} else {
+		try {
+			return repository.findById(idReceita).get();
+		}catch(Exception e) {
 			throw new NotFound("Receita não encontrada");
 		}
 	}

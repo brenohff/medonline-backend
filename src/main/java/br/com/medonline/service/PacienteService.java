@@ -40,5 +40,13 @@ public class PacienteService {
 			throw new NotFound("Paciente não encontrado.");
 		}
 	}
+	
+	public Paciente buscaPacientePorEmail(String email) {
+		try {
+			return repository.buscaPacientePorEmail(email);
+		} catch (Exception e) {
+			throw new NotFound("Paciente não encontrado.");
+		}
+	}
 
 }

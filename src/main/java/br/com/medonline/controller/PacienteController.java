@@ -30,8 +30,13 @@ public class PacienteController {
 	}
 
 	@RequestMapping(value = "/buscaPacientePeloID")
-	public Paciente getByFaceID(@RequestParam(value = "idPaciente") Long idPaciente) {
+	public Paciente getByID(@RequestParam(value = "idPaciente") Long idPaciente) {
 		return service.buscaPacientePorID(idPaciente);
+	}
+	
+	@RequestMapping(value = "/buscaPacientePeloEmail")
+	public Paciente getByEmail(@RequestParam(value = "email") String email) {
+		return service.buscaPacientePorEmail(email);
 	}
 
 }

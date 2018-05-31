@@ -1,6 +1,7 @@
 package br.com.medonline.modal;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -33,23 +34,17 @@ public class Paciente implements Serializable{
 	@OneToMany(mappedBy = "paciente")
 	private Set<Consulta> consulta;
 	
-	private String dtNascimento;
+	private String email;
+	private Date dtNascimento;
 	private String nome;
 	private String observacao;
 	private TipoSexo sexo;
 	
 	
 	//GETTERS AND SETTERS
+	
 	public String getNome() {
 		return nome;
-	}
-
-	public String getDtNascimento() {
-		return dtNascimento;
-	}
-
-	public void setDtNascimento(String dtNascimento) {
-		this.dtNascimento = dtNascimento;
 	}
 
 	public void setNome(String nome) {
@@ -95,6 +90,22 @@ public class Paciente implements Serializable{
 
 	public void setIdPaciente(Long idPaciente) {
 		this.idPaciente = idPaciente;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Date getDtNascimento() {
+		return dtNascimento;
+	}
+
+	public void setDtNascimento(Date dtNascimento) {
+		this.dtNascimento = dtNascimento;
 	};
 	
 	

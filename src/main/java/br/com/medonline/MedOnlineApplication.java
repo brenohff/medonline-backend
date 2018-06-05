@@ -1,5 +1,8 @@
 package br.com.medonline;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -26,6 +29,8 @@ public class MedOnlineApplication implements CommandLineRunner {
 		p.setEmail("brenohff@gmail.com");
 		p.setNome("Breno Henrique Ferreira Franco");
 		p.setSexo(TipoSexo.MASC);
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		p.setDtNascimento((Date) dateFormat.parse("22/05/1996"));
 
 		Endereco e = new Endereco();
 		e.setCep("72320-301");

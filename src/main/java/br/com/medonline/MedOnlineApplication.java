@@ -1,5 +1,6 @@
 package br.com.medonline;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,6 +13,7 @@ import br.com.medonline.service.PacienteService;
 @SpringBootApplication
 public class MedOnlineApplication implements CommandLineRunner {
 
+	@Autowired
 	private PacienteService service;
 
 	public static void main(String[] args) {

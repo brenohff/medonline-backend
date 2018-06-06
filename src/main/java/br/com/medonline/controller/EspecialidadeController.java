@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.medonline.modal.Especialidade;
-import br.com.medonline.modal.Medico;
 import br.com.medonline.service.EspecialidadeService;
 
 @RestController
@@ -24,15 +23,20 @@ public class EspecialidadeController {
 	public List<Especialidade> buscaTodos() {
 		return service.buscaEspecialidades();
 	}
+	
+	@RequestMapping("/buscaTodosSemMedico")
+	public List<Especialidade> buscaEspecialidadesSemMedicos() {
+		return service.buscaEspecialidadesSemMedicos();
+	}
 
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
 	public void salvar(@RequestBody Especialidade especialidade) {
 		service.salvarEspecialidade(especialidade);
 	}
 
-	@RequestMapping(value = "/buscaMedicoPorEspecialidade")
-	public List<Medico> buscaMedicoPorEspecialidade(@RequestParam(value = "idEspecialidade") Long idEspecialidade) {
-		return service.buscaMedicoPorEspecialidade(idEspecialidade);
+	@RequestMapping(value = "/buscaEspecialidadePorID")
+	public Especialidade buscaEspecialidadePorID(@RequestParam(value = "idEspecialidade") Long idEspecialidade) {
+		return service.buscaEspecialidadePorID(idEspecialidade);
 	}
-
+	
 }

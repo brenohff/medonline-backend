@@ -92,6 +92,7 @@ public class Medico implements Serializable {
 		this.idMedico = idMedico;
 	}
 
+	@JsonIgnore
 	public Especialidade getEspecialidade() {
 		return especialidade;
 	}

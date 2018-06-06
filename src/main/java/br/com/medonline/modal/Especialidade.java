@@ -21,6 +21,7 @@ public class Especialidade {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idEspecialidade;
 	private String especialidade;
+	private String descricao;
 
 	@OneToMany(mappedBy = "especialidade")
 	private Set<Especialidade> medico;
@@ -47,6 +48,14 @@ public class Especialidade {
 
 	public void setMedico(Set<Especialidade> medico) {
 		this.medico = medico;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 }

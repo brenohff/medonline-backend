@@ -33,5 +33,13 @@ public class ConsultaController {
 	public Consulta getByFaceID(@RequestParam(value="idConsulta") Long idConsulta) {
 		return service.buscaConsultaPorID(idConsulta);
 	}
+	
+//	@MessageMapping("/consulta/{eventId}/enviaMensagem")
+//	@SendTo("/topic/consulta/{eventId}")
+//	public LTChat sendMessage(@DestinationVariable String eventId, @Payload LTChat chatMessage) {
+//		chatMessage.setEventId(eventId);
+//		chatService.saveChat(chatMessage);
+//		return chatMessage;
+//	}
 
 }

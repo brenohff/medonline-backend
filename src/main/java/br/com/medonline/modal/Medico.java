@@ -1,6 +1,7 @@
 package br.com.medonline.modal;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -28,7 +30,9 @@ public class Medico implements Serializable{
 	
 	private String nome;
 	private String crm;
-	private String especialidade;
+	
+	@ManyToMany(mappedBy = "medicos")
+	private Set<Especialidade> especialidades = new HashSet<>();
 	
 	@ManyToOne()
 	@JoinColumn(name = "idEndereco", nullable = false)
@@ -55,14 +59,6 @@ public class Medico implements Serializable{
 
 	public void setCrm(String crm) {
 		this.crm = crm;
-	}
-
-	public String getEspecialidade() {
-		return especialidade;
-	}
-
-	public void setEspecialidade(String especialidade) {
-		this.especialidade = especialidade;
 	}
 
 	public Endereco getEndereco() {
@@ -96,6 +92,14 @@ public class Medico implements Serializable{
 
 	public void setIdMedico(Long idMedico) {
 		this.idMedico = idMedico;
+	}
+
+	public Set<Especialidade> getEspecialidades() {
+		return especialidades;
+	}
+
+	public void setEspecialidades(Set<Especialidade> especialidades) {
+		this.especialidades = especialidades;
 	}
 	
 }

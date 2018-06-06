@@ -1,16 +1,12 @@
 package br.com.medonline.modal;
 
-import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -26,10 +22,8 @@ public class Especialidade {
 	private Long idEspecialidade;
 	private String especialidade;
 
-	@ManyToMany(cascade = { CascadeType.ALL })
-	@JoinTable(name = "medico_especialidade", joinColumns = {
-			@JoinColumn(name = "idEspecialidade") }, inverseJoinColumns = { @JoinColumn(name = "idMedico") })
-	private Set<Medico> medicos = new HashSet<>();
+	@OneToMany(mappedBy = "especialidade")
+	private Set<Especialidade> medico;
 
 	public Long getIdEspecialidade() {
 		return idEspecialidade;
@@ -47,12 +41,12 @@ public class Especialidade {
 		this.especialidade = especialidade;
 	}
 
-	public Set<Medico> getMedicos() {
-		return medicos;
+	public Set<Especialidade> getMedico() {
+		return medico;
 	}
 
-	public void setMedicos(Set<Medico> medicos) {
-		this.medicos = medicos;
+	public void setMedico(Set<Especialidade> medico) {
+		this.medico = medico;
 	}
 
 }

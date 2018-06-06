@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.medonline.modal.Especialidade;
+import br.com.medonline.modal.Medico;
 import br.com.medonline.repository.EspecialidadeRp;
 import br.com.medonline.service.exception.CouldNotSave;
 
@@ -25,6 +26,11 @@ public class EspecialidadeService {
 		} catch (Exception e) {
 			throw new CouldNotSave("Não foi possível salvar a especialidade.");
 		}
+	}
+	
+
+	public List<Medico> buscaMedicoPorEspecialidade(Long idEspecialidade) {
+		return repository.buscaMedicoPorEspecialidade(idEspecialidade);
 	}
 
 }

@@ -41,7 +41,4 @@ public class MedicoService {
 		}
 	}
 
-	public List<Medico> buscaMedicoPorEspecialidade(Long idEspecialidade) {
-		return repository.buscaMedicoPorEspecialidade(idEspecialidade);
-	}
 }

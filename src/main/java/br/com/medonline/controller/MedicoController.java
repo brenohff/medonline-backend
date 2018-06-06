@@ -18,20 +18,25 @@ public class MedicoController {
 
 	@Autowired
 	MedicoService service;
-	
+
 	@RequestMapping("/buscaTodos")
-	public List<Medico> buscaTodos(){
+	public List<Medico> buscaTodos() {
 		return service.buscaMedicos();
 	}
-	
+
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
-	public void salvar(@RequestBody Medico medico){
+	public void salvar(@RequestBody Medico medico) {
 		service.salvarMedico(medico);
 	}
-	
+
 	@RequestMapping(value = "/buscaMedicoPeloID")
-	public Medico getByFaceID(@RequestParam(value="idMedico") Long idMedico) {
+	public Medico getByFaceID(@RequestParam(value = "idMedico") Long idMedico) {
 		return service.buscaMedicoPorID(idMedico);
+	}
+
+	@RequestMapping(value = "/buscaMedicoPorEspecialidade")
+	public List<Medico> buscaMedicoPorEspecialidade(@RequestParam(value = "idEspecialidade") Long idEspecialidade) {
+		return service.buscaMedicoPorEspecialidade(idEspecialidade);
 	}
 
 }

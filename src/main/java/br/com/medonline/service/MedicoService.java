@@ -40,4 +40,8 @@ public class MedicoService {
 			throw new NotFound("Médico não encontrado.");
 		}
 	}
+
+	public List<Medico> buscaMedicoPorEspecialidade(Long idEspecialidade) {
+		return repository.buscaMedicoPorEspecialidade(idEspecialidade);
+	}
 }

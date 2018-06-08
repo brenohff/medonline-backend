@@ -40,7 +40,7 @@ public class PacienteService {
 			throw new NotFound("Paciente não encontrado.");
 		}
 	}
-	
+
 	public Paciente buscaPacientePorEmail(String email) {
 		try {
 			return repository.buscaPacientePorEmail(email);
@@ -49,4 +49,12 @@ public class PacienteService {
 		}
 	}
 
+	public void atualizarPaciente(Paciente paciente) {
+		try {
+			repository.getOne(paciente.getIdPaciente());
+			repository.save(paciente);
+		} catch (Exception e) {
+			throw new NotFound("Paciente não encontrado.");
+		}
+	}
 }

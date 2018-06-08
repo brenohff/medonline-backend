@@ -25,15 +25,20 @@ public class PacienteController {
 	}
 
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
-	public void salvar(@RequestBody Paciente Paciente) {
-		service.salvarPaciente(Paciente);
+	public void salvar(@RequestBody Paciente paciente) {
+		service.salvarPaciente(paciente);
+	}
+
+	@RequestMapping(value = "/atualizar", method = RequestMethod.PUT)
+	public void atualizar(@RequestBody Paciente paciente) {
+		service.atualizarPaciente(paciente);
 	}
 
 	@RequestMapping(value = "/buscaPacientePeloID")
 	public Paciente getByID(@RequestParam(value = "idPaciente") Long idPaciente) {
 		return service.buscaPacientePorID(idPaciente);
 	}
-	
+
 	@RequestMapping(value = "/buscaPacientePeloEmail")
 	public Paciente getByEmail(@RequestParam(value = "email") String email) {
 		return service.buscaPacientePorEmail(email);

@@ -57,4 +57,8 @@ public class PacienteService {
 			throw new NotFound("Paciente não encontrado.");
 		}
 	}
+
+	public Paciente buscaPorEmailESenha(String email, String senha){
+		return repository.findByEmailAndSenha(email, senha);
+	}
 }

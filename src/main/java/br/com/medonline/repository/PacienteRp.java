@@ -11,4 +11,6 @@ public interface PacienteRp extends JpaRepository<Paciente, Long>{
 	@Query("SELECT p FROM Paciente p WHERE p.email = :email")
 	public Paciente buscaPacientePorEmail(@Param("email") String email);
 
+	Paciente findByEmailAndSenha(String email, String senha);
+
 }

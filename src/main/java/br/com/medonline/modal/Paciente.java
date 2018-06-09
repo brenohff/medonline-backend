@@ -42,6 +42,8 @@ public class Paciente implements Serializable{
 	private String nome;
 	private String observacao;
 	private TipoSexo sexo;
+
+	private String senha;
 	
 	
 	//GETTERS AND SETTERS

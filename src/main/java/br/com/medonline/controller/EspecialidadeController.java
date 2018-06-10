@@ -23,11 +23,6 @@ public class EspecialidadeController {
 	public List<Especialidade> buscaTodos() {
 		return service.buscaEspecialidades();
 	}
-	
-	@RequestMapping("/buscaTodosSemMedico")
-	public List<Especialidade> buscaEspecialidadesSemMedicos() {
-		return service.buscaEspecialidadesSemMedicos();
-	}
 
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
 	public void salvar(@RequestBody Especialidade especialidade) {

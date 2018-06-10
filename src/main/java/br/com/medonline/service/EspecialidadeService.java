@@ -19,10 +19,6 @@ public class EspecialidadeService {
 	public List<Especialidade> buscaEspecialidades() {
 		return repository.findAll();
 	}
-	
-	public List<Especialidade> buscaEspecialidadesSemMedicos() {
-		return repository.buscaEspecialidadesSemMedicos();
-	}
 
 	public void salvarEspecialidade(Especialidade especialidade) {
 		try {

@@ -41,8 +41,12 @@ public class MedicoService {
 		}
 	}
 
-	public Medico buscarPorEmailESenha(String email, String senha){
+	public Medico buscarPorEmailESenha(String email, String senha) {
 		return repository.findByEmailAndSenha(email, senha);
+	}
+
+	public List<Medico> buscaMedicoPelaEspecialidade(Long idEspecialidade) {
+		return repository.buscaMedicoPelaEspecialidade(idEspecialidade);
 	}
 
 }

@@ -33,5 +33,10 @@ public class MedicoController {
 	public Medico getByFaceID(@RequestParam(value = "idMedico") Long idMedico) {
 		return service.buscaMedicoPorID(idMedico);
 	}
+	
+	@RequestMapping(value = "/buscaMedicoPelaEspecialidade")
+	public List<Medico> buscaMedicoPelaEspecialidade(@RequestParam(value = "idEspecialidade") Long idEspecialidade){
+		return service.buscaMedicoPelaEspecialidade(idEspecialidade);
+	}
 
 }

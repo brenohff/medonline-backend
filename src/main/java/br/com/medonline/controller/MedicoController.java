@@ -34,7 +34,7 @@ public class MedicoController {
 		return service.buscaMedicoPorID(idMedico);
 	}
 	
-	@RequestMapping(value = "buscaMedicoPelaEspecialidade")
+	@RequestMapping(value = "/buscaMedicoPelaEspecialidade")
 	public List<Medico> buscaMedicoPelaEspecialidade(@RequestParam(value = "idEspecialidade") Long idEspecialidade){
 		return service.buscaMedicoPelaEspecialidade(idEspecialidade);
 	}

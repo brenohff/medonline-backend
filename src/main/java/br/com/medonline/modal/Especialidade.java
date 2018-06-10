@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
@@ -20,11 +21,12 @@ public class Especialidade {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long idEspecialidade;
+	
 	private String especialidade;
 	private String descricao;
 
 	@OneToMany(mappedBy = "especialidade")
-	private Set<Especialidade> medico;
+	private Set<Medico> medico;
 
 	public Long getIdEspecialidade() {
 		return idEspecialidade;
@@ -42,14 +44,6 @@ public class Especialidade {
 		this.especialidade = especialidade;
 	}
 
-	public Set<Especialidade> getMedico() {
-		return medico;
-	}
-
-	public void setMedico(Set<Especialidade> medico) {
-		this.medico = medico;
-	}
-
 	public String getDescricao() {
 		return descricao;
 	}
@@ -58,4 +52,12 @@ public class Especialidade {
 		this.descricao = descricao;
 	}
 
+	@JsonIgnore
+	public Set<Medico> getMedico() {
+		return medico;
+	}
+
+	public void setMedico(Set<Medico> medico) {
+		this.medico = medico;
+	}
 }

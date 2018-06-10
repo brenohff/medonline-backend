@@ -13,6 +13,6 @@ import br.com.medonline.modal.Medico;
 public interface MedicoRp extends JpaRepository<Medico, Long> {
 
 	@Query("SELECT m FROM Medico m WHERE m.especialidade.idEspecialidade = :idEspecialidade")
-	public List<Medico> buscaMedicoPelaEspecialidade(@Param("'idEspecialidade") Long idEspecialidade);
+	public List<Medico> buscaMedicoPelaEspecialidade(@Param("idEspecialidade") Long idEspecialidade);
 	
 }

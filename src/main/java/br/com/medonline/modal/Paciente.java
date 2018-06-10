@@ -111,7 +111,15 @@ public class Paciente implements Serializable{
 
 	public void setDtNascimento(Date dtNascimento) {
 		this.dtNascimento = dtNascimento;
-	};
+	}
+
+	public void setSenha(String senha){
+		this.senha = senha;
+	}
+
+	public String getSenha(){
+		return senha;
+	}
 	
 	
 }

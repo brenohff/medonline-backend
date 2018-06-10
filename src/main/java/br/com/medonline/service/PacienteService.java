@@ -38,6 +38,7 @@ public class PacienteService {
 			return repository.findById(idPaciente).get();
 		} catch (Exception e) {
 			throw new NotFound("Paciente não encontrado.");
+
 		}
 	}
 

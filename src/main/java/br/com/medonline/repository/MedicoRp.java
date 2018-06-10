@@ -14,7 +14,10 @@ public interface MedicoRp extends JpaRepository<Medico, Long> {
 
     Medico findByEmailAndSenha(String email, String senha);
 
-	@Query("SELECT m FROM Medico m WHERE m.especialidade.idEspecialidade = :idEspecialidade")
-	public List<Medico> buscaMedicoPelaEspecialidade(@Param("idEspecialidade") Long idEspecialidade);
+    @Query("SELECT m FROM Medico m WHERE m.especialidade.idEspecialidade = :idEspecialidade")
+    public List<Medico> buscaMedicoPelaEspecialidade(@Param("idEspecialidade") Long idEspecialidade);
 
+
+    @Query("SELECT m FROM Medico m WHERE m.email = :email")
+    Medico findByEmail(@Param("email") String email);
 }

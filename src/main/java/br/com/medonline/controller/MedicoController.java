@@ -2,6 +2,7 @@ package br.com.medonline.controller;
 
 import java.util.List;
 
+import br.com.medonline.modal.Paciente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,6 +35,11 @@ public class MedicoController {
 	@RequestMapping(value = "/buscaMedicoPelaEspecialidade")
 	public List<Medico> buscaMedicoPelaEspecialidade(@RequestParam(value = "idEspecialidade") Long idEspecialidade){
 		return service.buscaMedicoPelaEspecialidade(idEspecialidade);
+	}
+
+	@RequestMapping(value = "/buscaMedicoPeloEmail")
+	public Medico getByEmail(@RequestParam(value = "email") String email) {
+		return service.buscaMedicoPeloEmail(email);
 	}
 
 }

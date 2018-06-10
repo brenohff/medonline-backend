@@ -5,14 +5,7 @@ import java.util.Date;
 import java.util.Set;
 
 import javax.annotation.PostConstruct;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -37,6 +30,9 @@ public class Medico extends Usuario implements Serializable {
 
 	@OneToMany(mappedBy = "medico")
 	private Set<Consulta> consulta;
+
+	@OneToOne(mappedBy = "medico")
+	private Avaliacao avaliacao;
 
 	// GETTERS AND SETTERS
 
@@ -73,4 +69,11 @@ public class Medico extends Usuario implements Serializable {
 		this.especialidade = especialidade;
 	}
 
+	public Avaliacao getAvaliacao() {
+		return avaliacao;
+	}
+
+	public void setAvaliacao(Avaliacao avaliacao) {
+		this.avaliacao = avaliacao;
+	}
 }

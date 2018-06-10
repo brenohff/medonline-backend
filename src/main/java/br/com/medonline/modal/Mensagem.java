@@ -19,8 +19,7 @@ public class Mensagem implements Serializable {
 
     private LocalDateTime data;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Usuario autor;
+    private boolean fromPaciente;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Consulta consulta;
@@ -49,11 +48,19 @@ public class Mensagem implements Serializable {
         this.data = data;
     }
 
-    public Usuario getAutor() {
-        return autor;
+    public boolean isFromPaciente() {
+        return fromPaciente;
     }
 
-    public void setAutor(Usuario autor) {
-        this.autor = autor;
+    public void setFromPaciente(boolean fromPaciente) {
+        this.fromPaciente = fromPaciente;
+    }
+
+    public Consulta getConsulta() {
+        return consulta;
+    }
+
+    public void setConsulta(Consulta consulta) {
+        this.consulta = consulta;
     }
 }

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
+import javax.annotation.PostConstruct;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @Entity
 @Table(name = "MEDICO")
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Medico implements Serializable {
+public class Medico extends Usuario implements Serializable {
 
 	private static final long serialVersionUID = -5888636092094648442L;
 
@@ -28,34 +29,16 @@ public class Medico implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idMedico;
 
-	private String nome;
 	private String crm;
-	private String email;
-	
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
-	private Date dtNascimento;
 
 	@ManyToOne()
 	@JoinColumn(name = "idEspecialidade", nullable = false)
 	private Especialidade especialidade;
 
-	@ManyToOne()
-	@JoinColumn(name = "idEndereco", nullable = false)
-	private Endereco endereco;
-
 	@OneToMany(mappedBy = "medico")
 	private Set<Consulta> consulta;
 
-	private TipoSexo sexo;
-
 	// GETTERS AND SETTERS
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
 
 	public String getCrm() {
 		return crm;
@@ -63,22 +46,6 @@ public class Medico implements Serializable {
 
 	public void setCrm(String crm) {
 		this.crm = crm;
-	}
-
-	public Endereco getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
-
-	public TipoSexo getSexo() {
-		return sexo;
-	}
-
-	public void setSexo(TipoSexo sexo) {
-		this.sexo = sexo;
 	}
 
 	@JsonIgnore
@@ -106,19 +73,4 @@ public class Medico implements Serializable {
 		this.especialidade = especialidade;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public Date getDtNascimento() {
-		return dtNascimento;
-	}
-
-	public void setDtNascimento(Date dtNascimento) {
-		this.dtNascimento = dtNascimento;
-	}
 }

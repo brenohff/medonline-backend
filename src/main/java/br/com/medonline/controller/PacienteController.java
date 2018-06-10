@@ -2,6 +2,8 @@ package br.com.medonline.controller;
 
 import java.util.List;
 
+import br.com.medonline.modal.Usuario;
+import br.com.medonline.service.MedicoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +17,9 @@ public class PacienteController {
 
 	@Autowired
 	PacienteService service;
+
+	@Autowired
+	MedicoService medicoService;
 
 	@RequestMapping("/buscaTodos")
 	public List<Paciente> buscaTodos() {
@@ -42,8 +47,12 @@ public class PacienteController {
 	}
 
 	@RequestMapping(value = "/login/{email}/{senha}")
-	public Paciente login(@PathVariable String email, @PathVariable String senha){
-		return service.buscaPorEmailESenha(email, senha);
+	public Usuario login(@PathVariable String email, @PathVariable String senha){
+		Usuario usuario = service.buscaPorEmailESenha(email, senha);
+		if(usuario == null){
+			usuario = medicoService.buscarPorEmailESenha(email, senha);
+		}
+		return usuario;
 	}
 
 }

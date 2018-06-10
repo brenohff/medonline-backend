@@ -41,4 +41,8 @@ public class MedicoService {
 		}
 	}
 
+	public Medico buscarPorEmailESenha(String email, String senha){
+		return repository.findByEmailAndSenha(email, senha);
+	}
+
 }

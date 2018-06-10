@@ -8,4 +8,6 @@ import br.com.medonline.modal.Medico;
 @Repository
 public interface MedicoRp extends JpaRepository<Medico, Long> {
 
+    Medico findByEmailAndSenha(String email, String senha);
+
 }

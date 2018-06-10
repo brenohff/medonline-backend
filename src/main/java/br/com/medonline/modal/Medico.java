@@ -1,6 +1,7 @@
 package br.com.medonline.modal;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -12,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -28,6 +30,10 @@ public class Medico implements Serializable {
 
 	private String nome;
 	private String crm;
+	private String email;
+	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+	private Date dtNascimento;
 
 	@ManyToOne()
 	@JoinColumn(name = "idEspecialidade", nullable = false)
@@ -101,4 +107,19 @@ public class Medico implements Serializable {
 		this.especialidade = especialidade;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Date getDtNascimento() {
+		return dtNascimento;
+	}
+
+	public void setDtNascimento(Date dtNascimento) {
+		this.dtNascimento = dtNascimento;
+	}
 }

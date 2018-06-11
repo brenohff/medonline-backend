@@ -1,10 +1,12 @@
 package br.com.medonline.modal;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "MENSAGEM")
@@ -15,7 +17,8 @@ public class Mensagem implements Serializable {
     @GeneratedValue
     private Long idMensagem;
     private String texto;
-    private LocalDateTime data;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+    private Date data;
     private boolean fromPaciente;
     @ManyToOne(fetch = FetchType.LAZY)
     private Consulta consulta;
@@ -36,11 +39,11 @@ public class Mensagem implements Serializable {
         this.texto = texto;
     }
 
-    public LocalDateTime getData() {
+    public Date getData() {
         return data;
     }
 
-    public void setData(LocalDateTime data) {
+    public void setData(Date data) {
         this.data = data;
     }
 

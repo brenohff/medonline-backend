@@ -24,7 +24,7 @@ public class WebSocketEventListener {
 	@EventListener
 	public void handleWebSocketDisconnectListener(SessionDisconnectEvent event) {
 		StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
-		logger.info(headerAccessor.getSessionAttributes().get("chatMessage").toString());
+		logger.info("web socket disconnected.");
 
 //		LTChat chatMessage = (LTChat) headerAccessor.getSessionAttributes().get("chatMessage");
 //

@@ -69,7 +69,6 @@ public class Consulta implements Serializable {
 		this.dtConsulta = dtConsulta;
 	}
 
-	@JsonIgnore
 	public Medico getMedico() {
 		return medico;
 	}

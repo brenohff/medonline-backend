@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Entity
@@ -68,6 +69,7 @@ public class Consulta implements Serializable {
 		this.dtConsulta = dtConsulta;
 	}
 
+	@JsonIgnore
 	public Medico getMedico() {
 		return medico;
 	}

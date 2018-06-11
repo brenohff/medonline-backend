@@ -44,7 +44,6 @@ public class Medico extends Usuario implements Serializable {
 		this.crm = crm;
 	}
 
-	@JsonIgnore
 	public Set<Consulta> getConsulta() {
 		return consulta;
 	}

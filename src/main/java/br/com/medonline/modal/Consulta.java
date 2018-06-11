@@ -28,7 +28,7 @@ public class Consulta implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idConsulta;
 
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private Date dtConsulta;
 
 	@ManyToOne()

@@ -14,13 +14,9 @@ public class Mensagem implements Serializable {
     @Id
     @GeneratedValue
     private Long idMensagem;
-
     private String texto;
-
     private LocalDateTime data;
-
     private boolean fromPaciente;
-
     @ManyToOne(fetch = FetchType.LAZY)
     private Consulta consulta;
 

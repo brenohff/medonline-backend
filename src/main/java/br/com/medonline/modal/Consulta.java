@@ -2,6 +2,7 @@ package br.com.medonline.modal;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -44,8 +45,10 @@ public class Consulta implements Serializable {
 	@OneToMany(mappedBy = "consulta")
 	private Set<Diagnostico> diagnostico;
 
-	private String assunto;
+	@OneToMany
+	private List<Mensagem> mensagens;
 
+	private String assunto;
 
 	// GETTERS AND SETTERS
 	

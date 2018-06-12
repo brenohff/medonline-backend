@@ -3,22 +3,24 @@ package br.com.medonline.modal;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "AVALIACAO")
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Avaliacao {
+public class Avaliacao implements Serializable {
 
     @Id
     @GeneratedValue
     private Long idAvaliacao;
-
     private Integer upVotes;
-
     private Integer downVotes;
 
     @OneToOne
     private Medico medico;
+
+
+    //region GETTERS AND SETTERS
 
     public Long getIdAvaliacao() {
         return idAvaliacao;
@@ -43,4 +45,6 @@ public class Avaliacao {
     public void setDownVotes(Integer downVotes) {
         this.downVotes = downVotes;
     }
+
+    //endregion
 }

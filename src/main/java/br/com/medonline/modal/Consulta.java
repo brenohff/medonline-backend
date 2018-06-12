@@ -22,90 +22,90 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Consulta implements Serializable {
 
-	private static final long serialVersionUID = -6861776569424067262L;
+    private static final long serialVersionUID = -6861776569424067262L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idConsulta;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idConsulta;
+    private Date dtConsulta;
+    private String assunto;
 
-//	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
-	private Date dtConsulta;
+    @ManyToOne()
+    @JoinColumn(name = "idMedico", nullable = false)
+    private Medico medico;
 
-	@ManyToOne()
-	@JoinColumn(name = "idMedico", nullable = false)
-	private Medico medico;
+    @ManyToOne()
+    @JoinColumn(name = "idPaciente", nullable = false)
+    private Paciente paciente;
 
-	@ManyToOne()
-	@JoinColumn(name = "idPaciente", nullable = false)
-	private Paciente paciente;
+    @OneToMany(mappedBy = "consulta")
+    private Set<Exame> exame;
 
-	@OneToMany(mappedBy = "consulta")
-	private Set<Exame> exame;
+    @OneToMany(mappedBy = "consulta")
+    private Set<Diagnostico> diagnostico;
 
-	@OneToMany(mappedBy = "consulta")
-	private Set<Diagnostico> diagnostico;
+    @OneToMany
+    private List<Mensagem> mensagens;
 
-	@OneToMany
-	private List<Mensagem> mensagens;
 
-	private String assunto;
+    //region GETTERS AND SETTERS
 
-	// GETTERS AND SETTERS
-	
-	public Long getIdConsulta() {
-		return idConsulta;
-	}
+    public Long getIdConsulta() {
+        return idConsulta;
+    }
 
-	public void setIdConsulta(Long idConsulta) {
-		this.idConsulta = idConsulta;
-	}
+    public void setIdConsulta(Long idConsulta) {
+        this.idConsulta = idConsulta;
+    }
 
-	public Date getDtConsulta() {
-		return dtConsulta;
-	}
+    public Date getDtConsulta() {
+        return dtConsulta;
+    }
 
-	public void setDtConsulta(Date dtConsulta) {
-		this.dtConsulta = dtConsulta;
-	}
+    public void setDtConsulta(Date dtConsulta) {
+        this.dtConsulta = dtConsulta;
+    }
 
-	public Medico getMedico() {
-		return medico;
-	}
+    public Medico getMedico() {
+        return medico;
+    }
 
-	public void setMedico(Medico medico) {
-		this.medico = medico;
-	}
+    public void setMedico(Medico medico) {
+        this.medico = medico;
+    }
 
-	public Paciente getPaciente() {
-		return paciente;
-	}
+    public Paciente getPaciente() {
+        return paciente;
+    }
 
-	public void setPaciente(Paciente paciente) {
-		this.paciente = paciente;
-	}
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
+    }
 
-	public Set<Exame> getExame() {
-		return exame;
-	}
+    public Set<Exame> getExame() {
+        return exame;
+    }
 
-	public void setExame(Set<Exame> exame) {
-		this.exame = exame;
-	}
+    public void setExame(Set<Exame> exame) {
+        this.exame = exame;
+    }
 
-	public Set<Diagnostico> getDiagnostico() {
-		return diagnostico;
-	}
+    public Set<Diagnostico> getDiagnostico() {
+        return diagnostico;
+    }
 
-	public void setDiagnostico(Set<Diagnostico> diagnostico) {
-		this.diagnostico = diagnostico;
-	}
+    public void setDiagnostico(Set<Diagnostico> diagnostico) {
+        this.diagnostico = diagnostico;
+    }
 
-	public String getAssunto() {
-		return assunto;
-	}
+    public String getAssunto() {
+        return assunto;
+    }
 
-	public void setAssunto(String assunto) {
-		this.assunto = assunto;
-	}
+    public void setAssunto(String assunto) {
+        this.assunto = assunto;
+    }
+
+    //endregion
 
 }

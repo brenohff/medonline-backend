@@ -17,13 +17,11 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @Table(name = "RECEITA")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Receita implements Serializable {
-	
 	private static final long serialVersionUID = -872597292408168024L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idReceita;
-	
 	private String descricao;
 	private Date dtReceita;
 	
@@ -32,7 +30,7 @@ public class Receita implements Serializable {
 	private Diagnostico diagnostico;
 	
 	
-	//GETTERS AND SETTERS
+	//region GETTERS AND SETTERS
 	public Long getIdReceita() {
 		return idReceita;
 	}
@@ -57,5 +55,7 @@ public class Receita implements Serializable {
 	public void setDiagnostico(Diagnostico diagnostico) {
 		this.diagnostico = diagnostico;
 	}
+
+	//endregion
 	
 }

@@ -19,7 +19,7 @@ public abstract class Usuario {
     @Column(unique = true)
     protected String email;
 
-//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
+    //    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
     protected Date dtNascimento;
 
     protected String nome;
@@ -75,4 +75,9 @@ public abstract class Usuario {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
+}
+
+enum TipoSexo {
+    MASC,
+    FEM
 }

@@ -20,61 +20,63 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Diagnostico implements Serializable {
 
-	private static final long serialVersionUID = 6143178888116852498L;
+    private static final long serialVersionUID = 6143178888116852498L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idDiagnostico;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idDiagnostico;
+    private String resultado;
+    private String descricao;
 
-	@OneToMany(mappedBy = "diagnostico")
-	private Set<Receita> receita;
+    @OneToMany(mappedBy = "diagnostico")
+    private Set<Receita> receita;
 
-	private String resultado;
-	private String descricao;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idConsulta", insertable = false, updatable = false)
+    private Consulta consulta;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idConsulta", insertable = false, updatable = false)
-	private Consulta consulta;
 
-	// GETTERS AND SETTERS
-	public Long getIdDiagnostico() {
-		return idDiagnostico;
-	}
+    //region GETTERS AND SETTERS
+    public Long getIdDiagnostico() {
+        return idDiagnostico;
+    }
 
-	public void setIdDiagnostico(Long idDiagnostico) {
-		this.idDiagnostico = idDiagnostico;
-	}
+    public void setIdDiagnostico(Long idDiagnostico) {
+        this.idDiagnostico = idDiagnostico;
+    }
 
-	public Set<Receita> getReceita() {
-		return receita;
-	}
+    public Set<Receita> getReceita() {
+        return receita;
+    }
 
-	public void setReceita(Set<Receita> receita) {
-		this.receita = receita;
-	}
+    public void setReceita(Set<Receita> receita) {
+        this.receita = receita;
+    }
 
-	public String getResultado() {
-		return resultado;
-	}
+    public String getResultado() {
+        return resultado;
+    }
 
-	public void setResultado(String resultado) {
-		this.resultado = resultado;
-	}
+    public void setResultado(String resultado) {
+        this.resultado = resultado;
+    }
 
-	public String getDescricao() {
-		return descricao;
-	}
+    public String getDescricao() {
+        return descricao;
+    }
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 
-	public Consulta getConsulta() {
-		return consulta;
-	}
+    public Consulta getConsulta() {
+        return consulta;
+    }
 
-	public void setConsulta(Consulta consulta) {
-		this.consulta = consulta;
-	}
+    public void setConsulta(Consulta consulta) {
+        this.consulta = consulta;
+    }
+
+    //endregion
 
 }

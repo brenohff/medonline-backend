@@ -16,45 +16,47 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @Entity
 @Table(name = "PACIENTE")
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Paciente extends Usuario implements Serializable{
+public class Paciente extends Usuario implements Serializable {
 
-	private static final long serialVersionUID = -5521092415402813636L;
+    private static final long serialVersionUID = -5521092415402813636L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idPaciente;
-	
-	@OneToMany(mappedBy = "paciente")
-	private Set<Consulta> consulta;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idPaciente;
+    private String observacao;
 
-	private String observacao;
+    @OneToMany(mappedBy = "paciente")
+    private Set<Consulta> consulta;
 
-	//GETTERS AND SETTERS
 
-	public String getObservacao() {
-		return observacao;
-	}
+    //region GETTERS AND SETTERS
 
-	public void setObservacao(String observacao) {
-		this.observacao = observacao;
-	}
+    public String getObservacao() {
+        return observacao;
+    }
 
-	@JsonIgnore
-	public Set<Consulta> getConsulta() {
-		return consulta;
-	}
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }
 
-	public void setConsulta(Set<Consulta> consulta) {
-		this.consulta = consulta;
-	}
+    @JsonIgnore
+    public Set<Consulta> getConsulta() {
+        return consulta;
+    }
 
-	public Long getIdPaciente() {
-		return idPaciente;
-	}
+    public void setConsulta(Set<Consulta> consulta) {
+        this.consulta = consulta;
+    }
 
-	public void setIdPaciente(Long idPaciente) {
-		this.idPaciente = idPaciente;
-	}
-	
-	
+    public Long getIdPaciente() {
+        return idPaciente;
+    }
+
+    public void setIdPaciente(Long idPaciente) {
+        this.idPaciente = idPaciente;
+    }
+
+    //endregion
+
+
 }

@@ -3,12 +3,7 @@ package br.com.medonline.modal;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -23,10 +18,11 @@ public class Mensagem implements Serializable {
 	@GeneratedValue
 	private Long idMensagem;
 	private String texto;
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
 	private Date data;
 	private boolean fromPaciente;
-	@ManyToOne(fetch = FetchType.LAZY)
+
+	@ManyToOne
+    @JoinColumn(name = "idConsulta", nullable = false)
 	private Consulta consulta;
 
 	public Long getIdMensagem() {

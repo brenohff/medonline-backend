@@ -31,8 +31,8 @@ public class ConsultaController {
 	}
 	
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
-	public void salvar(@RequestBody Consulta Consulta){
-		service.salvarConsulta(Consulta);
+	public Consulta salvar(@RequestBody Consulta Consulta){
+		return  service.salvarConsulta(Consulta);
 	}
 	
 	@RequestMapping(value = "/buscaConsultaPeloID")

@@ -3,9 +3,7 @@ package br.com.medonline.controller;
 import br.com.medonline.modal.Mensagem;
 import br.com.medonline.service.MensagemService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +22,10 @@ public class MensagemController {
     @RequestMapping("/buscaMensagensPorConsulta")
     public List<Mensagem> buscaMensagensPorConsulta(@RequestParam(value = "idConsulta") Long idConsulta) {
         return service.buscaMensagensPorConsulta(idConsulta);
+    }
+
+    @RequestMapping(value = "/salvar", method = RequestMethod.POST)
+    public void salvarMensagem(@RequestBody Mensagem mensagem) {
+        service.salvarMensagem(mensagem);
     }
 }

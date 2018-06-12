@@ -12,25 +12,26 @@ import br.com.medonline.service.exception.NotFound;
 @Service
 public class ConsultaService {
 
-	@Autowired
-	private ConsultaRp repository;
-	
-	public List<Consulta> buscaConsultas(){
-		return repository.findAll();
-	}
-	
-	public void salvarConsulta(Consulta Consulta) {
-		repository.save(Consulta);
-	}
-	
-	public Consulta buscaConsultaPorID(Long idConsulta) {
-		Consulta m = repository.buscaConsultaPorID(idConsulta);
-		
-		if(m != null) {
-			return m;
-		}else {
-			throw new NotFound("Consulta não encontrada.");
-		}
-	}
-	
+    @Autowired
+    private ConsultaRp repository;
+
+    public List<Consulta> buscaConsultas() {
+        return repository.findAll();
+    }
+
+    public Consulta salvarConsulta(Consulta consulta) {
+        repository.save(consulta);
+        return consulta;
+    }
+
+    public Consulta buscaConsultaPorID(Long idConsulta) {
+        Consulta m = repository.buscaConsultaPorID(idConsulta);
+
+        if (m != null) {
+            return m;
+        } else {
+            throw new NotFound("Consulta não encontrada.");
+        }
+    }
+
 }

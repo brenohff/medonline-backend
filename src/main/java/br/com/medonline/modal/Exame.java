@@ -29,7 +29,7 @@ public class Exame implements Serializable {
 	private String tipo;
 	private String descricao;
 	
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
+//	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
 	private Date dtExame;
 
 	@ManyToOne

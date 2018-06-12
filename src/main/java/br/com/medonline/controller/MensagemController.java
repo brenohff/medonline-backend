@@ -11,21 +11,21 @@ import java.util.List;
 @RequestMapping("/mensagem")
 public class MensagemController {
 
-    @Autowired
-    MensagemService service;
+	@Autowired
+	MensagemService service;
 
-    @RequestMapping("/buscaTodos")
-    public List<Mensagem> buscaTodos() {
-        return service.buscaTodas();
-    }
+	@RequestMapping("/buscaTodos")
+	public List<Mensagem> buscaTodos() {
+		return service.buscaTodas();
+	}
 
-    @RequestMapping("/buscaMensagensPorConsulta")
-    public List<Mensagem> buscaMensagensPorConsulta(@RequestParam(value = "idConsulta") Long idConsulta) {
-        return service.buscaMensagensPorConsulta(idConsulta);
-    }
+	@RequestMapping("/buscaMensagensPorConsulta")
+	public List<Mensagem> buscaMensagensPorConsulta(@RequestParam(value = "idConsulta") Long idConsulta) {
+		return service.buscaMensagensPorConsulta(idConsulta);
+	}
 
-    @RequestMapping(value = "/salvar", method = RequestMethod.POST)
-    public void salvarMensagem(@RequestBody Mensagem mensagem) {
-        service.salvarMensagem(mensagem);
-    }
+	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
+	public List<Mensagem> salvarMensagem(@RequestBody Mensagem mensagem) {
+		return service.salvarMensagem(mensagem);
+	}
 }

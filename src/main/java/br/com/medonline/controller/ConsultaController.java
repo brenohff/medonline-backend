@@ -40,6 +40,16 @@ public class ConsultaController {
 		return service.buscaConsultaPorID(idConsulta);
 	}
 	
+	@RequestMapping(value = "/buscaConsultaPorPaciente")
+	public List<Consulta> buscaConsultaPorPaciente(@RequestParam(value="idPaciente") Long idPaciente) {
+		return service.buscaConsultaPorPaciente(idPaciente);
+	}
+	
+	@RequestMapping(value = "/buscaConsultaPorMedico")
+	public List<Consulta> buscaConsultaPorMedico(@RequestParam(value="idMedico") Long idMedico) {
+		return service.buscaConsultaPorMedico(idMedico);
+	}
+	
 	@MessageMapping("/consulta/{consultaId}/enviaMensagem")
 	@SendTo("/topic/consulta/{consultaId}")
 	public Mensagem enviaMensagem (@DestinationVariable String consultaId, @Payload Mensagem mensagem) {

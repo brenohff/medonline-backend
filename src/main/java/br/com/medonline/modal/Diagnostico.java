@@ -32,7 +32,7 @@ public class Diagnostico implements Serializable {
     private Set<Receita> receita;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idConsulta", insertable = false, updatable = false)
+    @JoinColumn(name = "idConsulta")
     private Consulta consulta;
 
 

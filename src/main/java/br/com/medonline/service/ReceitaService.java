@@ -20,9 +20,9 @@ public class ReceitaService {
 		return repository.findAll();
 	}
 
-	public void salvarReceita(Receita receita) {
+	public Receita salvarReceita(Receita receita) {
 		try {
-			repository.save(receita);
+			return repository.save(receita);
 		} catch (Exception e) {
 			throw new CouldNotSave("Não foi possível inserir receita.");
 		}

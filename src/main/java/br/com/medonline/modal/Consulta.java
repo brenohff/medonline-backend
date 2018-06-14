@@ -47,6 +47,8 @@ public class Consulta implements Serializable {
     @OneToMany
     private List<Mensagem> mensagens;
 
+    private Boolean isFinalizada = false;
+
 
     //region GETTERS AND SETTERS
 
@@ -104,6 +106,14 @@ public class Consulta implements Serializable {
 
     public void setAssunto(String assunto) {
         this.assunto = assunto;
+    }
+
+    public Boolean getFinalizada() {
+        return isFinalizada;
+    }
+
+    public void setFinalizada(Boolean finalizada) {
+        isFinalizada = finalizada;
     }
 
     //endregion

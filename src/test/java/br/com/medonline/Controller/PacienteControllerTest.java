@@ -11,6 +11,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.powermock.modules.junit4.PowerMockRunner;
 
+import java.util.List;
+
+import static junit.framework.Assert.assertNotNull;
 import static junit.framework.TestCase.assertNull;
 
 @RunWith(PowerMockRunner.class)
@@ -33,6 +36,13 @@ public class PacienteControllerTest {
     @Test
     public void atualizar(){
         pacienteController.atualizar(new Paciente());
+    }
+
+
+    @Test
+    public void buscarTodos(){
+        List<Paciente> pacientes = pacienteController.buscaTodos();
+        assertNotNull(pacientes);
     }
 
     @Test

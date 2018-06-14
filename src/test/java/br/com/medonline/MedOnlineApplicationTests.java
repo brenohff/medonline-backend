@@ -5,20 +5,13 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.assertNotNull;
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.when;
 import static org.powermock.api.easymock.PowerMock.mockStatic;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
+@RunWith(PowerMockRunner.class)
 @PrepareForTest({SpringApplication.class})
 public class MedOnlineApplicationTests {
 
@@ -28,10 +21,10 @@ public class MedOnlineApplicationTests {
     @Mock
     private ConfigurableApplicationContext configurableApplicationContext;
 
-    @Test
+    @Test()
     public void main(){
         mockStatic(SpringApplication.class);
-        when(SpringApplication.run(eq(MedOnlineApplication.class), any(String[].class))).thenReturn(configurableApplicationContext);
+//        when(SpringApplication.run(eq(MedOnlineApplication.class), any(String[].class))).thenReturn(configurableApplicationContext);
         medOnlineApplication.main(new String[]{"Running Tests"});
     }
 

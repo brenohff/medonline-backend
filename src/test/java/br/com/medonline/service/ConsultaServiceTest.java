@@ -11,7 +11,9 @@ import org.powermock.modules.junit4.PowerMockRunner;
 
 import java.util.List;
 
+import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertNotNull;
+import static org.hamcrest.Matchers.any;
 
 @RunWith(PowerMockRunner.class)
 public class ConsultaServiceTest {
@@ -24,6 +26,7 @@ public class ConsultaServiceTest {
 
     @Test
     public void buscarTodas(){
+        Consulta consulta = new Consulta();
         List<Consulta> consultaList = consultaService.buscaConsultas();
         assertNotNull(consultaList);
     }

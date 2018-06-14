@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/mensagem")
+@CrossOrigin
 public class MensagemController {
 
 	@Autowired

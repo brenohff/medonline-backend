@@ -2,7 +2,9 @@ package br.com.medonline.Controller;
 
 import br.com.medonline.controller.ConsultaController;
 import br.com.medonline.modal.Consulta;
+import br.com.medonline.modal.Mensagem;
 import br.com.medonline.service.ConsultaService;
+import br.com.medonline.service.MensagemService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -23,6 +25,9 @@ public class ConsultaControllerTest {
     @Mock
     private ConsultaService consultaService;
 
+    @Mock
+    private MensagemService mensagemService;
+
     @Test
     public void buscarTodos(){
         List<Consulta> consultaList = consultaController.buscaTodos();
@@ -39,5 +44,11 @@ public class ConsultaControllerTest {
     public void getByFaceID(){
         Consulta consulta = consultaController.getByFaceID(1L);
         assertNull(consulta);
+    }
+
+    @Test
+    public void enviaMensagem(){
+        Mensagem mensagem = consultaController.enviaMensagem("teste", new Mensagem());
+        assertNotNull(mensagem);
     }
 }

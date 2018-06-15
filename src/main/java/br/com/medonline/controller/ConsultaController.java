@@ -44,7 +44,14 @@ public class ConsultaController {
 	public List<Consulta> buscaConsultaPorPaciente(@RequestParam(value="idPaciente") Long idPaciente) {
 		return service.buscaConsultaPorPaciente(idPaciente);
 	}
-	
+
+	@RequestMapping(value = "/cancelar")
+	public void cancelar(@RequestParam(value="idConsulta") Long idConsulta) {
+		Consulta consulta = service.buscaConsultaPorID(idConsulta);
+		consulta.setFinalizada(true);
+		service.salvarConsulta(consulta);
+	}
+
 	@RequestMapping(value = "/buscaConsultaPorMedico")
 	public List<Consulta> buscaConsultaPorMedico(@RequestParam(value="idMedico") Long idMedico) {
 		return service.buscaConsultaPorMedico(idMedico);

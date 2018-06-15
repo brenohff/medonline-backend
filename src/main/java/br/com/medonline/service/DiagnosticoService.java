@@ -31,8 +31,9 @@ public class DiagnosticoService {
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void salvarDiagnostico(Diagnostico diagnostico) {
-		Consulta consulta = diagnostico.getConsulta();
+		Consulta consulta = consultaService.buscaConsultaPorID(diagnostico.getIdConsulta());
 		diagnostico = repository.save(diagnostico);
+		diagnostico.setConsulta(consulta);
 		for(Receita receita : diagnostico.getReceita()){
 			receita.setDiagnostico(diagnostico);
 			receitaService.salvarReceita(receita);

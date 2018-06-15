@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -41,7 +42,7 @@ public class Consulta implements Serializable {
     @OneToMany(mappedBy = "consulta")
     private Set<Exame> exame;
 
-    @OneToMany(mappedBy = "consulta")
+    @OneToMany(mappedBy = "consulta", fetch = FetchType.LAZY)
     private Set<Diagnostico> diagnostico;
 
     @OneToMany

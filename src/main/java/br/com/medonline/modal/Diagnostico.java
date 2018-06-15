@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Entity
@@ -32,7 +33,7 @@ public class Diagnostico implements Serializable {
     private Set<Receita> receita;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idConsulta", insertable = false, updatable = false)
+    @JoinColumn(name = "idConsulta")
     private Consulta consulta;
 
 
@@ -69,6 +70,7 @@ public class Diagnostico implements Serializable {
         this.descricao = descricao;
     }
 
+    @JsonIgnore
     public Consulta getConsulta() {
         return consulta;
     }

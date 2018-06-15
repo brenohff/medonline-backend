@@ -3,13 +3,7 @@ package br.com.medonline.modal;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -33,6 +27,8 @@ public class Exame implements Serializable {
     @JoinColumn(name = "idConsulta")
     private Consulta consulta;
 
+    @Transient
+    private Long idConsulta;
 
     //region GETTERS AND SETTERS
     public Long getIdExame() {
@@ -59,11 +55,11 @@ public class Exame implements Serializable {
         this.dtExame = dtExame;
     }
 
-    @JsonIgnore
     public Consulta getConsulta() {
         return consulta;
     }
 
+    @JsonIgnore
     public void setConsulta(Consulta consulta) {
         this.consulta = consulta;
     }
@@ -74,6 +70,14 @@ public class Exame implements Serializable {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public Long getIdConsulta() {
+        return idConsulta;
+    }
+
+    public void setIdConsulta(Long idConsulta) {
+        this.idConsulta = idConsulta;
     }
 
     //endregion

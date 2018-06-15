@@ -26,7 +26,11 @@ public class ExameService {
 
 	public void salvarExame(Exame exame) {
 		try {
-			consultaRepository.findById(exame.getConsulta().getIdConsulta()).get();
+			if(exame.getConsulta() != null){
+				exame.setConsulta(consultaRepository.findById(exame.getConsulta().getIdConsulta()).get());
+			} else {
+				exame.setConsulta(consultaRepository.findById(exame.getIdConsulta()).get());
+			}
 		} catch (Exception e) {
 			throw new CouldNotSave(
 					"Erro ao cadastrar exame, verifique os dados e se a consulta existe antes de tentar novamente.");

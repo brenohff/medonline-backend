@@ -15,7 +15,7 @@ public interface ConsultaRp extends JpaRepository<Consulta, Long>{
 	@Query("SELECT m FROM Consulta m WHERE m.idConsulta = :idConsulta")
 	public Consulta buscaConsultaPorID(@Param("idConsulta") Long idConsulta);
 	
-	@Query("SELECT m FROM Consulta m WHERE m.paciente.idPaciente = :idPaciente")
+	@Query("SELECT m FROM Consulta m WHERE m.paciente.idPaciente = :idPaciente ORDER BY m.dtConsulta DESC")
 	public List<Consulta> buscaConsultaPorPaciente(@Param("idPaciente") Long idPaciente);
 	
 	@Query("SELECT m FROM Consulta m WHERE m.medico.idMedico = :idMedico")

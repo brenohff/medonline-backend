@@ -40,7 +40,7 @@ public class Consulta implements Serializable {
     @JoinColumn(name = "idPaciente", nullable = false)
     private Paciente paciente;
 
-    @OneToMany(mappedBy = "consulta")
+    @OneToMany(mappedBy = "consulta", fetch = FetchType.LAZY)
     private Set<Exame> exame;
 
     @OneToMany(mappedBy = "consulta", fetch = FetchType.LAZY)

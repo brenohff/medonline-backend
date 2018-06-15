@@ -59,7 +59,6 @@ public class Exame implements Serializable {
         this.dtExame = dtExame;
     }
 
-    @JsonIgnore
     public Consulta getConsulta() {
         return consulta;
     }

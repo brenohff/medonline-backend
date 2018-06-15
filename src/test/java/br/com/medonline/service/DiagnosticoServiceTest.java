@@ -28,12 +28,6 @@ public class DiagnosticoServiceTest {
         assertNotNull(diagnosticoList);
     }
 
-    @Test
-    public void salvar(){
-        Diagnostico diagnostico = new Diagnostico();
-        diagnosticoService.salvarDiagnostico(diagnostico);
-    }
-
     @Test(expected = NotFound.class)
     public void buscarPorId(){
         Diagnostico diagnostico = diagnosticoService.buscaDiagnosticoPorID(1L);
